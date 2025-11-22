@@ -10,6 +10,7 @@ namespace DriverSearch.Algorithms
             if (drivers.Count <= count)
                 return new List<Driver>(drivers);
 
+            // Используем кортеж для хранения водителя и расстояния
             var queue = new PriorityQueue<Driver, double>(Comparer<double>.Create((a, b) => b.CompareTo(a)));
 
             foreach (var driver in drivers)
@@ -20,17 +21,22 @@ namespace DriverSearch.Algorithms
                 {
                     queue.Enqueue(driver, distance);
                 }
-                else if (distance < queue.Peek().Priority)
+                else
                 {
-                    queue.Dequeue();
-                    queue.Enqueue(driver, distance);
+                    // Получаем самый дальний элемент без использования .Priority
+                    queue.TryPeek(out var farthestDriver, out var farthestDistance);
+                    if (distance < farthestDistance)
+                    {
+                        queue.Dequeue();
+                        queue.Enqueue(driver, distance);
+                    }
                 }
             }
 
             var result = new List<Driver>();
             while (queue.Count > 0)
             {
-                result.Add(queue.Dequeue().Element);
+                result.Add(queue.Dequeue());
             }
 
             result.Reverse();
