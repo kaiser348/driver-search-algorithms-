@@ -1,10 +1,12 @@
 using DriverSearch.Models;
 using DriverSearch.Algorithms;
+using BenchmarkDotNet.Running;
 
 class Program
 {
     static void Main()
     {
+        // ДЕМО-КОД (показывает работу алгоритмов)
         var drivers = new List<Driver>
         {
             new Driver(1, 2, 3),
@@ -15,14 +17,14 @@ class Program
             new Driver(6, 6, 6),
             new Driver(7, 3, 4),
             new Driver(8, 7, 8),
-            new Driver(9, 0, 0),
+            new Driver(9, 8, 8),
             new Driver(10, 9, 9)
         };
 
         var order = new Order(4, 4);
 
         Console.WriteLine("Тестирование трех алгоритмов поиска ближайших водителей:\n");
-
+        
         var algorithms = new List<IDistanceCalculator>
         {
             new BruteForceAlgorithm(),
@@ -36,16 +38,17 @@ class Program
         {
             var result = algorithms[i].FindNearestDrivers(drivers, order, 5);
             Console.WriteLine($"{names[i]} алгоритм:");
-            
+
             foreach (var driver in result)
             {
                 var distance = Math.Sqrt(Math.Pow(driver.X - order.X, 2) + Math.Pow(driver.Y - order.Y, 2));
                 Console.WriteLine($"  Водитель {driver.Id}: ({driver.X}, {driver.Y}) - расстояние: {distance:F2}");
             }
-           
+            Console.WriteLine();
         }
+
+        // ЗАПУСК БЕНЧМАРКОВ (измерение производительности)
+        Console.WriteLine("Запуск бенчмарков...");
         BenchmarkRunner.Run<DriverSearchBenchmarks>();
-         Console.WriteLine();
-         
     }
 }
