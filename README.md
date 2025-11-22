@@ -1,2 +1,26 @@
-# driver-search-algorithms-
-Сравнение алгоритмов поиска ближайших водителей
+# Сравнение алгоритмов поиска ближайших водителей
+
+## Описание проекта
+Реализация трех алгоритмов для поиска 5 ближайших к заказу водителей:
+
+1. **АЛГОРИТМ 1: Brute Force** - полный перебор с сортировкой
+2. **АЛГОРИТМ 2: Sorting** - сортировка всего массива  
+3. **АЛГОРИТМ 3: Heap** - алгоритм с использованием кучи
+
+## Структура проекта
+driver-search-algorithms/
+├── Models/
+│ ├── Driver.cs
+│ └── Order.cs
+├── Algorithms/
+│ ├── IDistanceCalculator.cs
+│ ├── BruteForceAlgorithm.cs
+│ ├── SortingAlgorithm.cs
+│ └── HeapAlgorithm.cs
+├── Tests/
+│ └── DriverSearchTests.cs
+├── screenshots/
+│ └── benchmark_results.png
+├── Program.cs
+├── BenchmarkTests.cs
+└── DriverSearch.csproj
