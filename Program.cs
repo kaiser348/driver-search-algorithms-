@@ -42,8 +42,9 @@ class Program
                 var distance = Math.Sqrt(Math.Pow(driver.X - order.X, 2) + Math.Pow(driver.Y - order.Y, 2));
                 Console.WriteLine($"  Водитель {driver.Id}: ({driver.X}, {driver.Y}) - расстояние: {distance:F2}");
             }
-            Console.WriteLine();
+           
         }
+         Console.WriteLine();
          BenchmarkRunner.Run<DriverSearchBenchmarks>();
     }
 }
