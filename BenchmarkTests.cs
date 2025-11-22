@@ -8,8 +8,8 @@ namespace DriverSearch.Benchmarks
     [MemoryDiagnoser]
     public class DriverSearchBenchmarks
     {
-        private List<Driver> _drivers;
-        private Order _order;
+        private List<Driver> _drivers = new List<Driver>();
+        private Order _order = new Order(0, 0);
         private readonly IDistanceCalculator _bruteForce = new BruteForceAlgorithm();
         private readonly IDistanceCalculator _sorting = new SortingAlgorithm();
         private readonly IDistanceCalculator _heap = new HeapAlgorithm();
