@@ -40,12 +40,4 @@ namespace DriverSearch.Benchmarks
         [Benchmark]
         public List<Driver> Algorithm3_Heap() => _heap.FindNearestDrivers(_drivers, _order, 5);
     }
-
-    class Program
-    {
-        static void Main()
-        {
-            var summary = BenchmarkRunner.Run<DriverSearchBenchmarks>();
-        }
-    }
 }
