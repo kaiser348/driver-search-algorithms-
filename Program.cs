@@ -44,5 +44,6 @@ class Program
             }
             Console.WriteLine();
         }
+         BenchmarkRunner.Run<DriverSearchBenchmarks>();
     }
 }
