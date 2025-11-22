@@ -7,8 +7,8 @@ namespace DriverSearch.Tests
     [TestFixture]
     public class DriverSearchTests
     {
-        private List<Driver> _testDrivers;
-        private Order _testOrder;
+        private List<Driver> _testDrivers = new List<Driver>();
+        private Order _testOrder = new Order(0, 0);
 
         [SetUp]
         public void Setup()
